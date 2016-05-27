@@ -1,4 +1,4 @@
-# 第1章
+# 1章
 
 ## リスト
 ```hs
@@ -76,5 +76,51 @@ snd
 * zip
 ```haskell
 zip [1,2,3] [4,4,4] # [(1,4),(2,4),(3,4)]
+```
 
+* 例
+```hs
+rightTriangles = [(a,b,c)|c<-[1..10],a<-[1..c],b<-[1..a],a^2+b^2 == c^2 , a+b+c == 24]
+```
+
+# 2章 型
+```hs
+addThree1 x y z = x+y+z
+
+addThree2 :: Int -> Int -> Int -> Int
+addThree2 x y z = x+y+z
+```
+
+```bash
+*Main> :t addThree1
+addThree1 :: Num a => a -> a -> a -> a
+*Main> :t addThree2
+addThree2 :: Int -> Int -> Int -> Int
+```
+
+## 型クラス
+Eq a =>は型クラス制約といい,等価性を比較できるようにする
+```bash
+(==) :: Eq a => a -> a -> Bool
+```
+
+## 型クラス制約
+### Ord型クラス
+順序をつけるための型クラス
+
+```haskell
+*Main> :t (<)
+(<) :: Ord a => a -> a -> Bool
+
+*Main> :t compare
+compare :: Ord a => a -> a -> Ordering
+```
+
+### Show型クラス
+### Read型クラス
+```haskell
+*Main> :t show
+show :: Show a => a -> String
+*Main> :t read
+read :: Read a => String -> a
 ```
